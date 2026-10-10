@@ -83,8 +83,11 @@ export default function PrivacyPage() {
         <ul className="list-disc space-y-1 pl-6">
           <li>Display name.</li>
           <li>
-            Email address. This is required so we can send you a confirmation, optional reminders,
-            and a link to edit or cancel your commitment.
+            Email address, if you give one. The organizer decides whether a signup requires it. We
+            use it to send you a confirmation with your link to change or cancel, and reminders if
+            the organizer has them on. If you leave it blank where that is allowed, we send you no
+            emails. Your link is then shown on screen after you sign up, and only that browser
+            remembers it: for 60 days, or until a week after your slot if that is later.
           </li>
           <li>Your slot selection, quantity, and any optional notes.</li>
           <li>
@@ -92,8 +95,8 @@ export default function PrivacyPage() {
           </li>
         </ul>
         <p>
-          A short-lived browser cookie lets you return and edit or cancel your own commitment
-          without re-entering your email. See the{' '}
+          A browser cookie keeps your link to change or cancel, so you can come back to your own
+          commitment from the same browser. See the{' '}
           <Link href="/cookies" className="text-brand underline">
             cookies page
           </Link>{' '}
@@ -127,11 +130,11 @@ export default function PrivacyPage() {
         <p>
           {INSTANCE_NAME} sends three kinds of email: organizer magic-link sign-in emails, a
           confirmation to a participant when they commit to a slot, and a reminder before a dated
-          slot. Moving to a different slot gives your sign-up a new private link, and sends a fresh
-          confirmation with it. The old link then leads to the new one. Confirmations and reminders
-          each contain a private link that lets you change or cancel that commitment without
-          signing in, so treat them as you would a password and don&apos;t forward them. Reminders
-          go out the day before the slot;
+          slot. A participant gets these only if they gave an email address. Moving to a different
+          slot gives your sign-up a new private link, and sends a fresh confirmation with it. The
+          old link then leads to the new one. Confirmations and reminders each contain a private
+          link that lets you change or cancel that commitment without signing in, so treat them as
+          you would a password and don&apos;t forward them. Reminders go out the day before the slot;
           organizers can turn them off for a signup entirely. Every reminder carries a link that stops
           reminders for that signup; we record only the time you opted out, and it does not affect
           any other signup or your slot itself. Delivery uses whichever transport the operator has
