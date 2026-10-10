@@ -90,6 +90,10 @@ for the new commitment. The old one is cancelled without a
 one too, writing `commitment.removed` (under Slot / field lifecycle) instead, so
 `commitment.cancelled` counts only the participants' own cancels.
 
+A participant who gave no email is sent nothing, so their commitments get no
+`commitment.confirmation_sent` row (and no `reminder.sent`). A commitment
+without one has not always had a send fail.
+
 ### Reminder pipeline
 
 | event | actor | payload | fired from |

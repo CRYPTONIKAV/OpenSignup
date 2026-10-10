@@ -121,7 +121,10 @@ export default async function ResponsesTab({ params }: PageParams) {
                       role="cell"
                       className="text-ink-muted max-md:col-start-1 max-md:row-start-3 max-md:break-words md:px-4 md:py-3"
                     >
-                      {c.participantEmail}
+                      {/* Words, not a dash: a bare dash means nothing without
+                          its column heading, and a row laid out for a phone
+                          has none. */}
+                      {c.participantEmail ?? 'No email'}
                     </td>
                     <td
                       role="cell"
