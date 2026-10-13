@@ -790,7 +790,11 @@ describe('useBuildState moveRow', () => {
 
     expect(fetchMock).toHaveBeenCalledTimes(2);
     expect(result.current.state.rows.map((r) => r.id)).toEqual(['r1', 'r2', 'r3']);
-    expect(result.current.state.saveStatus).toMatchObject({ kind: 'error', code: 'invalid_input' });
+    expect(result.current.state.saveStatus).toEqual({
+      kind: 'error',
+      code: 'invalid_input',
+      message: "The slots changed in another window, so your move wasn't saved. Drag it again.",
+    });
   });
 
   it('falls back to snapshot when refetch also fails', async () => {

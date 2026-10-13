@@ -199,6 +199,9 @@ export function buildReducer(state: BuildState, action: BuildAction): BuildState
 const DEBOUNCE_MS = 800;
 const SAVED_CLEAR_MS = 3000;
 const JSON_HEADERS = { 'Content-Type': 'application/json' } as const;
+// The reorder route refuses a list that isn't every slot exactly once, which from
+// the builder means another window changed the slots. Its own message is for API callers.
+const STALE_REORDER_MESSAGE = "The slots changed in another window, so your move wasn't saved. Drag it again.";
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -662,6 +665,7 @@ export function useBuildState(
         markSaved();
       } catch (e) {
         failure = asErr(e);
+        if (failure.code === 'invalid_input') failure = { code: 'invalid_input', message: STALE_REORDER_MESSAGE };
       }
       if (failure !== null) {
         try {
