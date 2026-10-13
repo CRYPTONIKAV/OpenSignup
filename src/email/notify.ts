@@ -133,6 +133,7 @@ export async function notifyCommitmentCreated(
       sendReminders: sendsReminders(row.signup.settings),
       slotAt: row.slot.slotAt,
       createdAt: row.commitment.createdAt,
+      remindersOptedOutAt: row.participant.remindersOptedOutAt,
     });
 
     // Every field the organizer defined, rendered the way the participant page
